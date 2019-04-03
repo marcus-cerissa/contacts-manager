@@ -10,12 +10,14 @@ import java.util.List;
 
 public class ContactsManager {
 
-    public static void main(String[] args) {
+    public void createFile(){
+
         String directory = "ContactManager";
         String filename = "ContactList.txt";
 
         Path dataDirectory = Paths.get(directory);
         Path dataFile = Paths.get(directory, filename);
+
 
         try {
             if(Files.notExists(dataDirectory)){
@@ -26,25 +28,38 @@ public class ContactsManager {
             }
 
 
-            Files.write(
-                    Paths.get("ContactManager", "ContactList.txt"),
-                    Arrays.asList("Marcus-1234567890"),
-                    StandardOpenOption.APPEND
-            );
-
-            List<String> lines = Files.readAllLines(dataFile);
-            for(String line : lines){
-                System.out.println(line);
-            }
-
-
-
-
         }catch(IOException ioe){
 
             System.out.println(ioe);
 
         }
+
+    }
+
+
+    public void appendFile(){
+
+        ///////// needs a try/catch block ///////////
+        Files.write(
+                Paths.get("ContactManager", "ContactList.txt"),
+                Arrays.asList("Marcus-1234567890"),
+                StandardOpenOption.APPEND
+        );
+
+    }
+
+    public void listFile(Path dataFile){
+
+        ////////// needs a try/catch block ////////
+        List<String> lines = Files.readAllLines(dataFile);
+        for(String line : lines){
+            System.out.println(line);
+        }
+
+    }
+
+    public static void main(String[] args) {
+
 
         System.out.println();
         System.out.println();
