@@ -13,7 +13,7 @@ public class ContactsManager {
     public void createFile(){
 
         String directory = "ContactManager";
-        String filename = "ContactList.txt";
+        String filename = "contacts.txt";
 
         Path dataDirectory = Paths.get(directory);
         Path dataFile = Paths.get(directory, filename);
@@ -41,7 +41,7 @@ public class ContactsManager {
 
         ///////// needs a try/catch block ///////////
         Files.write(
-                Paths.get("ContactManager", "ContactList.txt"),
+                Paths.get("ContactManager", "contacts.txt"),
                 Arrays.asList("Marcus-1234567890"),
                 StandardOpenOption.APPEND
         );
