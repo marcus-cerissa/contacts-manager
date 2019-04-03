@@ -33,13 +33,18 @@ public class ContactsManager {
             System.out.println(ioe);
 
         }
-
     }
 
 
-    public void appendFile(){
+    public void appendFile() {
 
         ///////// needs a try/catch block ///////////
+        try {
+
+        } catch (Exception e) {
+
+        }
+
         Files.write(
                 Paths.get("ContactManager", "contacts.txt"),
                 Arrays.asList("Marcus-1234567890"),
@@ -48,20 +53,28 @@ public class ContactsManager {
 
     }
 
+
     public void listFile(Path dataFile){
 
         ////////// needs a try/catch block ////////
+        try {
+
+        } catch (Exception e) {
+
+        }
+
+
         List<String> lines = Files.readAllLines(dataFile);
         for(String line : lines){
             System.out.println(line);
         }
 
-    }
+   }
 
 
     public String getMenu() {
 
-        return "1. View contacts.\n" +
+        return  "1. View contacts.\n" +
                 "2. Add a new contact.\n" +
                 "3. Search a contact by name.\n" +
                 "4. Delete an existing contact.\n" +
