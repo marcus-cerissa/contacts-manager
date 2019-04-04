@@ -122,10 +122,8 @@ public class ContactsManager {
 
 
     public static void main(String[] args) {
-
-        System.out.println();
-        System.out.println();
-        System.out.println("Finished Functioning");
+    ContactsManager CM = new ContactsManager();
+    CM.runApp();
 
     }  // main method
 
