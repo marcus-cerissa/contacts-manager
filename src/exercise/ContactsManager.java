@@ -15,11 +15,11 @@ import java.util.*;
 public class ContactsManager {
 
 
-    Input input = new Input(new Scanner(System.in));
+    Scanner scanner = new Scanner(System.in);
 
     public void createFile(){
 
-        String directory = "ContactManager";
+        String directory = "ContactsManager";
         String filename = "contacts.txt";
 
         Path dataDirectory = Paths.get(directory);
@@ -45,36 +45,44 @@ public class ContactsManager {
 
     public void appendFile() {
 
-        ///////// needs a try/catch block ///////////
+        System.out.println("What is the full name of the contact you want to add?");
+        String userName = scanner.nextLine();
+
+
+        System.out.println("What is the number of the contact you want to add?");
+        String userNumber = scanner.nextLine();
+
         try {
+
+        Files.write(
+                Paths.get("ContactsManager", "contacts.txt"),
+                Arrays.asList(userName + " | " + userNumber),
+                StandardOpenOption.APPEND
+        );
 
         } catch (Exception e) {
 
         }
 
-        Files.write(
-                Paths.get("ContactsManager", "contacts.txt"),
-                Arrays.asList("Marcus-1234567890"),
-                StandardOpenOption.APPEND
-        );
 
     }
 
 
     public void listFile(Path dataFile){
 
-        ////////// needs a try/catch block ////////
         try {
-
-        } catch (Exception e) {
-
-        }
-
 
         List<String> lines = Files.readAllLines(dataFile);
         for(String line : lines){
             System.out.println(line);
         }
+
+        } catch (Exception e) {
+
+
+        }
+
+
 
    }
 
