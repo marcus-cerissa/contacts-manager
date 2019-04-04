@@ -10,6 +10,8 @@ import java.util.List;
 
 public class ContactsManager {
 
+    Input input = new Input(new Scanner(System.in));
+
     public void createFile(){
 
         String directory = "ContactManager";
@@ -74,13 +76,12 @@ public class ContactsManager {
 
     public String getMenu() {
 
-        return  "1. View contacts.\n" +
+        return  "Enter an option (1, 2, 3, 4, or 5):\n" +
+                "1. View contacts.\n" +
                 "2. Add a new contact.\n" +
                 "3. Search a contact by name.\n" +
                 "4. Delete an existing contact.\n" +
-                "5. Exit.\n" +
-                "Enter an option (1, 2, 3, 4 or 5):";
-
+                "5. Exit.\n";
     }
 
 
