@@ -7,8 +7,13 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.util.*;
+
+
 
 public class ContactsManager {
+
 
     Input input = new Input(new Scanner(System.in));
 
@@ -48,7 +53,7 @@ public class ContactsManager {
         }
 
         Files.write(
-                Paths.get("ContactManager", "contacts.txt"),
+                Paths.get("ContactsManager", "contacts.txt"),
                 Arrays.asList("Marcus-1234567890"),
                 StandardOpenOption.APPEND
         );
@@ -86,15 +91,14 @@ public class ContactsManager {
 
 
 
-
     public static void main(String[] args) {
-
 
         System.out.println();
         System.out.println();
         System.out.println("Finished Functioning");
-    }
+
+    }  // main method
 
 
-}
+}  // ContactsManager class
 
