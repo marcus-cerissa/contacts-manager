@@ -99,12 +99,13 @@ public class ContactsManager {
         if(userContinue.equalsIgnoreCase("y")){
             this.runApp();
         }else{
-            System.out.println("\n\nGoodBye\nWe hoped you enjoyed your stay.");
+            System.out.println("\n\nGoodBye\nWe hope you enjoyed your stay.");
         }
 
         return userChoice;
 
     }
+
 
 
     public void appendFile() {
@@ -118,24 +119,35 @@ public class ContactsManager {
         System.out.println("What is the full name of the contact you want to add?");
         String userName = scanner.nextLine();
 
+        scanner.nextLine();
 
         System.out.println("What is the number of the contact you want to add?");
-        String userNumber = scanner.nextLine();
+        int userNumber = scanner.nextInt();
 
         try {
 
         Files.write(
                 Paths.get("ContactsManager", "contacts.txt"),
-                Arrays.asList(userName + " | " + userNumber),
-                StandardOpenOption.APPEND
+
+//                List<String> list = new ArrayList<String>(Arrays.asList(userName + " | " + userNumber)),     // CA 2nd
+
+//                List<String> filename = new ArrayList<>(),            // CA 3rd
+//                userName.add(userName + " | " + userNumber);
+
+
+
+            Arrays.asList(userName + " | " + userNumber),          // MA 1st
+
+            StandardOpenOption.APPEND
         );
 
         } catch (Exception e) {
 
         }
 
-
     }
+
+
 
 
     public void listFile(){
@@ -158,10 +170,8 @@ public class ContactsManager {
 
 
         }
-
-
-
    }
+
 
 
     public String getMenu() {
@@ -199,11 +209,7 @@ public class ContactsManager {
 
         }
 
-
-
     }  // deleteContact
-
-
 
 
 
@@ -213,6 +219,7 @@ public class ContactsManager {
     CM.runApp();
 
     }  // main method
+
 
 
 }  // ContactsManager class
