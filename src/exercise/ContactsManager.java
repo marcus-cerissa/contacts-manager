@@ -18,15 +18,15 @@ public class ContactsManager {
     static String filename = "contacts.txt";
 
     static Path p = Paths.get(directory, filename);
-    Scanner scanner = new Scanner(System.in);
+    public Scanner scanner = new Scanner(System.in);
 
 
     public void runApp(){
 
-        this.createFile();
+//        this.createFile();
         System.out.println(this.getMenu());
-        this.appendFile();
-        this.listFile();
+        this.getMenu();
+        this.menuChoice();
 
     }
 
@@ -53,6 +53,57 @@ public class ContactsManager {
             System.out.println(ioe);
 
         }
+    }
+
+    public int menuChoice(){
+
+        System.out.println("\nPlease enter a number from 0 - 5: ");
+
+        int userChoice = scanner.nextInt();
+
+        if(userChoice == 0){
+
+            System.out.println("EXIT");
+
+        }else if(userChoice == 1){
+
+            System.out.println("VIEW ALL");
+            this.listFile();
+
+
+        }else if(userChoice == 2){
+
+            System.out.println("ADD CONTACT");
+            this.appendFile();
+
+        }else if(userChoice == 3){
+
+            System.out.println("SEARCH CONTACT");
+
+
+        }else if(userChoice == 4){
+
+            System.out.println("DELETE CONTACT");
+            this.deleteContact();
+
+        }else if(userChoice == 5){
+
+            System.out.println("EXIT APP");
+
+        }
+        scanner.nextLine();
+
+        System.out.println("Would you like to choose again? (y/n)");
+        String userContinue = scanner.next();
+
+        if(userContinue.equalsIgnoreCase("y")){
+            this.runApp();
+        }else{
+            System.out.println("\n\nGoodBye\nWe hoped you enjoyed your stay.");
+        }
+
+        return userChoice;
+
     }
 
 
@@ -99,8 +150,8 @@ public class ContactsManager {
         try {
 
         List<String> lines = Files.readAllLines(dataFile);
-        for(String line : lines){
-            System.out.println(line);
+        for(int i = 0; i < lines.size(); i ++){
+            System.out.println(i + ": " + lines.get(i));
         }
 
         } catch (Exception e) {
@@ -125,30 +176,29 @@ public class ContactsManager {
 
 
 
-    public static void deleteContact() {
+    public void deleteContact() {
+
+        String directory = "ContactsManager";
+        String filename = "contacts.txt";
+
+        Path dataDirectory = Paths.get(directory);
+        Path dataFile = Paths.get(directory, filename);
+
         System.out.println("\nEnter the number of the contact you want to delete: \n");
+        int userInput = scanner.nextInt();
 
+        try {
 
-//        Input input = new Input(scanner);
-//        String userInput = userInput.getString();
-//        String deleteContact = " ";
-//        List<String>contacts = new ArrayList<>();
-//        try {
-//            contacts = Files. readAllLines(p);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        for(String contact : contacts) {
-//            if (contact.toLowerCase().startsWith(userInput.toLowerCase())) {
-//                deleteContact = contact;
-//            }
-//        }
-//        contacts.remove(deleteContact);
-//        try {
-//            Files.write(p, contacts);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+            List<String> lines = Files.readAllLines(dataFile);
+            lines.remove(userInput);
+            Files.write(Paths.get("ContactsManager", "contacts.txt"), lines);
+
+        }catch(Exception e){
+
+            System.out.println("DELETE FILE ERROR");
+
+        }
+
 
 
     }  // deleteContact
