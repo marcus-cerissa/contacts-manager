@@ -17,6 +17,15 @@ public class ContactsManager {
 
     Scanner scanner = new Scanner(System.in);
 
+    public void runApp(){
+
+        this.createFile();
+        System.out.println(this.getMenu());
+        this.appendFile();
+        this.listFile();
+
+    }
+
     public void createFile(){
 
         String directory = "ContactsManager";
@@ -45,6 +54,12 @@ public class ContactsManager {
 
     public void appendFile() {
 
+        String directory = "ContactsManager";
+        String filename = "contacts.txt";
+
+        Path dataDirectory = Paths.get(directory);
+        Path dataFile = Paths.get(directory, filename);
+
         System.out.println("What is the full name of the contact you want to add?");
         String userName = scanner.nextLine();
 
@@ -68,7 +83,14 @@ public class ContactsManager {
     }
 
 
-    public void listFile(Path dataFile){
+    public void listFile(){
+
+        String directory = "ContactsManager";
+        String filename = "contacts.txt";
+
+        Path dataDirectory = Paths.get(directory);
+        Path dataFile = Paths.get(directory, filename);
+
 
         try {
 
