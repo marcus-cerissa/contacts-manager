@@ -9,13 +9,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.*;
-
+import java.lang.String;
 
 
 public class ContactsManager {
 
+    static String directory = "src/.";
+    static String filename = "contacts.txt";
 
+    static Path p = Paths.get(directory, filename);
     Scanner scanner = new Scanner(System.in);
+
 
     public void runApp(){
 
@@ -118,6 +122,39 @@ public class ContactsManager {
                 "4. Delete an existing contact.\n" +
                 "5. Exit.\n";
     }
+
+
+
+    public static void deleteContact() {
+        System.out.println("\nEnter the number of the contact you want to delete: \n");
+
+
+//        Input input = new Input(scanner);
+//        String userInput = userInput.getString();
+//        String deleteContact = " ";
+//        List<String>contacts = new ArrayList<>();
+//        try {
+//            contacts = Files. readAllLines(p);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        for(String contact : contacts) {
+//            if (contact.toLowerCase().startsWith(userInput.toLowerCase())) {
+//                deleteContact = contact;
+//            }
+//        }
+//        contacts.remove(deleteContact);
+//        try {
+//            Files.write(p, contacts);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+
+    }  // deleteContact
+
+
+
 
 
 
